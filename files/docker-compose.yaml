@@ -1,0 +1,18 @@
+version: "3"
+
+networks:
+    web_net:
+        external: false
+
+services:
+    transfer:
+      image: dutchcoders/transfer.sh
+      environment:
+        - basedir=/tmp/
+        - provider=storj
+        - listener=1337
+        # Environment variables required but not set in compose file to protect secrets.
+        # storj-access
+        # storj-bucket
+      networks:
+        - web_net  
